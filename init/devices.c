@@ -935,8 +935,10 @@ void device_init(void)
         sehandle = selinux_android_file_context_handle();
     }
 
-    /* is 256K enough? udev uses 16MB! */
-    device_fd = uevent_open_socket(256*1024, true);
+    /* I (peat-psuwit) experienced packet drop during startup on
+       LG L90 Dual. So, I decided to increase buffer to 1MB.
+       NOTE: udev uses 16MB. */
+    device_fd = uevent_open_socket(1024*1024, true);
     if(device_fd < 0)
         return;
 
