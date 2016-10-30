@@ -498,6 +498,7 @@ service drm /system/bin/drmserver
     class main
     user drm
     group drm system inet drmrpc
+    disabled
 
 service media /system/bin/camera_service
     class main
@@ -508,6 +509,7 @@ service media /system/bin/camera_service
 service installd /system/bin/installd
     class main
     socket installd stream 600 system system
+    disabled
 
 service flash_recovery /system/etc/install-recovery.sh
     class main
